@@ -23,6 +23,7 @@ public class Coupon implements Serializable {
 	private String title;
 	private String details;
 	private Date expiredTime;
+	private String imageUrl;
 
 	public Long getId() {
 		return id;
@@ -86,5 +87,13 @@ public class Coupon implements Serializable {
 
 	public void setExpiredTime(Date expiredTime) {
 		this.expiredTime = expiredTime;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }
