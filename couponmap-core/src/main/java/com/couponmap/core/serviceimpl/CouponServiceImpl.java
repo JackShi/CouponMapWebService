@@ -14,37 +14,37 @@ import com.couponmap.core.service.CouponService;
 @Service
 public class CouponServiceImpl implements CouponService {
 
-	 private CouponDao couponDao;
+	private CouponDao couponDao;
 
-	 @Transactional(readOnly = false)
-	 public Coupon create(Coupon coupon) {
-	  return getCouponDao().create(coupon);
-	 }
+	@Transactional(readOnly = false)
+	public Coupon create(Coupon coupon) {
+		return getCouponDao().create(coupon);
+	}
 
-	 @Transactional(readOnly = true)
-	 public List<Coupon> getAll() {
-	  return getCouponDao().getAll();
-	 }
+	@Transactional(readOnly = true)
+	public List<Coupon> getAll() {
+		return getCouponDao().getAll();
+	}
 
-	 @Transactional(readOnly = false)
-	 public void delete(Long id) {
-	  getCouponDao().delete(id);
-	 }
+	@Transactional(readOnly = false)
+	public void delete(Long id) {
+		getCouponDao().delete(id);
+	}
 
-	 @Transactional(readOnly = false)
-	 public Coupon update(Coupon coupon) {
-	  return getCouponDao().update(coupon);
-	 }
+	@Transactional(readOnly = false)
+	public Coupon update(Coupon coupon) {
+		return getCouponDao().update(coupon);
+	}
 
-	 @Transactional(readOnly = false)
-	 public Coupon find(Long id) {
-	  return getCouponDao().find(id);
-	 }
+	@Transactional(readOnly = false)
+	public Coupon find(Long id) {
+		return getCouponDao().find(id);
+	}
 
-	 @Transactional(readOnly = true)
-	 public Long count() {
-	  return getCouponDao().count();
-	 }
+	@Transactional(readOnly = true)
+	public Long count() {
+		return getCouponDao().count();
+	}
 
 	private CouponDao getCouponDao() {
 		return couponDao;
@@ -53,6 +53,20 @@ public class CouponServiceImpl implements CouponService {
 	@Inject
 	private void setCouponDao(CouponDao couponDao) {
 		this.couponDao = couponDao;
+	}
+
+	@Override
+	public List<Coupon> findCouponsByStoreName(String storeName) {
+		// TODO Auto-generated method stub
+		return getCouponDao().listCouponsByStoreName(storeName);
+	}
+
+	@Override
+	public List<Coupon> findNearCoupons(Double latitude, Double longitude,
+			Double distance) {
+		return getCouponDao().listCouponsByLocationAndDistance(latitude,
+				longitude, distance);
+
 	}
 
 }
